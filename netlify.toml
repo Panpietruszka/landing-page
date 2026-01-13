@@ -1,16 +1,18 @@
-# Cache dla zasobów statycznych (Style, Fonty, Obrazy)
 [[headers]]
-  for = "/*.css"
+  for = "/*"
   [headers.values]
+    # Naprawa FCP: Przeglądarka pobiera style i fonty równolegle z HTML-em
+    Link = '''
+    </style.css>; rel=preload; as=style,
+    <https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap>; rel=preload; as=style
+    '''
+
+    # Cache-Control: Pliki graficzne i style zostają w pamięci przeglądarki
     Cache-Control = "public, max-age=31536000, immutable"
 
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    # Bezpieczeństwo
+    X-Content-Type-Options = "nosniff"
 
-# Cache dla HTML (zawsze sprawdzaj, czy jest nowa wersja)
-[[headers]]
-  for = "/"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+[[plugins]]
+  # Optymalizacja obrazów w locie (poprawia LCP)
+  package = "@netlify/plugin-image-optim"
