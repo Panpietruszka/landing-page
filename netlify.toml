@@ -1,9 +1,14 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Przyspieszamy ładowanie stylu i fontu równolegle z HTML
     Link = '''
     </style.css>; rel=preload; as=style,
     <https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap>; rel=preload; as=style
     '''
+
+    # Optymalizacja pamięci podręcznej (Cache)
     Cache-Control = "public, max-age=31536000, immutable"
+
+    # Bezpieczeństwo nagłówków
     X-Content-Type-Options = "nosniff"
