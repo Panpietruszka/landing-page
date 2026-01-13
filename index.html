@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethereal Solutions - Kreujemy Cyfrową Rzeczywistość</title>
-    
-    <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        media="print" onload="this.media='all'">
+
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
     <style>
         /* Krytyczny CSS ładowany natychmiast */
         body {
@@ -26,7 +31,10 @@
         }
 
         /* Wymuszenie wyświetlania tekstu zanim załaduje się font z Google */
-        h1, h2, p, a {
+        h1,
+        h2,
+        p,
+        a {
             font-display: swap;
         }
 
@@ -79,7 +87,8 @@
         class="relative bg-gray-900 text-white section-padding flex items-center justify-center min-h-screen pt-24">
         <div class="absolute inset-0 bg-black opacity-60"></div>
         <div class="relative text-center max-w-4xl mx-auto px-6">
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight" fetchpriority="high">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight"
+                fetchpriority="high">
                 Ethereal Solutions
             </h1>
             <p class="mt-4 text-xl sm:text-2xl font-medium text-gray-300">
@@ -167,33 +176,46 @@
                 Poniżej prezentujemy kilka przykładowych projektów.
             </p>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
                 <div
                     class="project-card relative group rounded-xl overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/600x400/1e293b/d1d5db?text=Projekt+1" alt="Projekt 1"
-                        class="w-full h-auto object-cover" loading="lazy">
+                        <picture>
+                            <source srcset="projekt1.webp" type="image/webp">
+                            <img src="projekt1.webp" alt="Projekt E-commerce dla Aether & Co." class="w-full h-auto object-cover" loading="lazy"
+                                width="600" height="400">
+                        </picture>
                     <div
                         class="project-overlay absolute inset-0 bg-blue-600/70 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
                         <p class="text-white text-xl font-semibold">Projekt E-commerce dla Aether & Co.</p>
                     </div>
                 </div>
+    
                 <div
                     class="project-card relative group rounded-xl overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/600x400/374151/d1d5db?text=Projekt+2" alt="Projekt 2"
-                        class="w-full h-auto object-cover" loading="lazy">
+                        <picture>
+                            <source srcset="projekt2.webp" type="image/webp">
+                            <img src="projekt2.webp" alt="Projekt E-commerce dla Aether & Co." class="w-full h-auto object-cover" loading="lazy"
+                                width="600" height="400">
+                        </picture>
                     <div
                         class="project-overlay absolute inset-0 bg-blue-600/70 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
                         <p class="text-white text-xl font-semibold">Strona Portfolio dla Zenith Tech</p>
                     </div>
                 </div>
+    
                 <div
                     class="project-card relative group rounded-xl overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105">
-                    <img src="https://placehold.co/600x400/4b5563/d1d5db?text=Projekt+3" alt="Projekt 3"
-                        class="w-full h-auto object-cover" loading="lazy">
+                        <picture>
+                            <source srcset="projekt3.webp" type="image/webp">
+                            <img src="projekt3.webp" alt="Projekt E-commerce dla Aether & Co." class="w-full h-auto object-cover" loading="lazy"
+                                width="600" height="400">
+                        </picture>
                     <div
                         class="project-overlay absolute inset-0 bg-blue-600/70 opacity-0 transition-opacity duration-300 flex items-center justify-center p-4 text-center">
                         <p class="text-white text-xl font-semibold">Aplikacja Mobilna dla Bloom Organics</p>
                     </div>
                 </div>
+    
             </div>
         </div>
     </section>
