@@ -1,18 +1,40 @@
+# 1. Nagłówki dla plików CSS (Twój Tailwind)
 [[headers]]
-  for = "/*"
+  for = "/style.css"
   [headers.values]
-    # Naprawa FCP: Przeglądarka pobiera style i fonty równolegle z HTML-em
-    Link = '''
-    </style.css>; rel=preload; as=style,
-    <https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap>; rel=preload; as=style
-    '''
-
-    # Cache-Control: Pliki graficzne i style zostają w pamięci przeglądarki
     Cache-Control = "public, max-age=31536000, immutable"
-
-    # Bezpieczeństwo
     X-Content-Type-Options = "nosniff"
 
-[[plugins]]
-  # Optymalizacja obrazów w locie (poprawia LCP)
-  package = "@netlify/plugin-image-optim"
+# 2. Nagłówki dla obrazów WebP
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 3. Zapobieganie cache'owaniu HTML (żeby zmiany były widoczne od razu)
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# 4. Optymalizacja kompresji i przekierowań (opcjonalnie)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build]
+  publish = "."
+
+[build.processing]
+  skip_node_bundler = true
+
+# Włączenie optymalizacji obrazów i assetów przez Netlify
+[build.processing.css]
+  bundle = true
+  minify = true
+[build.processing.js]
+  bundle = true
+  minify = true
+[build.processing.images]
+  compress = true
