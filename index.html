@@ -2,23 +2,32 @@
 <html lang="pl">
 
 <head>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethereal Solutions - Kreujemy Cyfrową Rzeczywistość</title>
-    <link rel="stylesheet preconnect" href="style.css">
+
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         /* Krytyczny CSS ładowany natychmiast */
         body {
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            /* Dodajemy font-display: swap dla fontów systemowych zanim załaduje się Inter */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #f3f4f6;
             color: #374151;
             scroll-behavior: smooth;
-            /* Przyspieszenie renderowania tekstu */
-            text-rendering: optimizeSpeed;
+            text-rendering: optimizeLegibility; /* Zmieniono ze Speed na Legibility dla lepszego wyglądu tekstu LCP */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Naprawa "Invisible Text" - wymuszamy pokazanie tekstu od razu */
+        h1 {
+            font-display: swap;
         }
 
         .section-padding {
@@ -262,5 +271,6 @@
 </body>
 
 </html>
+
 
 
