@@ -1,40 +1,24 @@
-# 1. Nagłówki dla plików CSS (Twój Tailwind)
+# 1. Agresywny cache dla małego pliku CSS i obrazków WebP
 [[headers]]
-  for = "/style.css"
+  for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    X-Content-Type-Options = "nosniff"
 
-# 2. Nagłówki dla obrazów WebP
 [[headers]]
   for = "/*.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# 3. Zapobieganie cache'owaniu HTML (żeby zmiany były widoczne od razu)
+# 2. Bezpieczeństwo dla głównej strony (zawsze świeża wersja)
 [[headers]]
   for = "/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# 4. Optymalizacja kompresji i przekierowań (opcjonalnie)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-[build]
-  publish = "."
-
+# 3. Dodatkowe optymalizacje serwera
 [build.processing]
   skip_node_bundler = true
-
-# Włączenie optymalizacji obrazów i assetów przez Netlify
 [build.processing.css]
-  bundle = true
-  minify = true
-[build.processing.js]
-  bundle = true
-  minify = true
+  minify = true # Nawet przy 5.8KB warto usunąć zbędne spacje
 [build.processing.images]
   compress = true
