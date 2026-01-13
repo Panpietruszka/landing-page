@@ -1,14 +1,15 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    # Przyspieszamy FCP poprzez natychmiastowe pobieranie stylu i fontów
+    # Przyspieszamy FCP - pobieranie stylu i fontu rusza razem z HTML
     Link = '''
     </style.css>; rel=preload; as=style,
     <https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap>; rel=preload; as=style
     '''
 
-    # Optymalizacja cache dla przeglądarki
+    # Rozwiązujemy problem z ostrzeżeniem Lighthouse (zdjęcie 4)
+    # Ustawiamy długi czas cache, aby przeglądarka nie pobierała plików co chwilę
     Cache-Control = "public, max-age=31536000, immutable"
 
-    # Podstawowe zabezpieczenie
+    # Bezpieczeństwo
     X-Content-Type-Options = "nosniff"
